@@ -28,6 +28,7 @@
             align-items: center;
             overflow-x: hidden;
             color: var(--text-color);
+            position: relative;
         }
 
         /* شاشة تسجيل الدخول */
@@ -91,6 +92,7 @@
             padding: 20px;
             text-align: center;
             animation: fadeIn 1.5s ease;
+            z-index: 5;
         }
 
         @keyframes fadeIn {
@@ -121,30 +123,6 @@
             margin: 15px 0;
         }
 
-        /* العداد التنازلي / التصاعدي للعمر */
-        .countdown-container {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 20px;
-            flex-wrap: wrap;
-        }
-
-        .time-box {
-            background: var(--primary-color);
-            color: white;
-            padding: 15px;
-            border-radius: 15px;
-            min-width: 80px;
-            box-shadow: 0 5px 15px rgba(255, 101, 132, 0.3);
-        }
-
-        .time-box span {
-            display: block;
-            font-size: 1.8rem;
-            font-weight: bold;
-        }
-
         /* ألبوم الصور الأفقي */
         .slider-wrapper {
             position: relative;
@@ -169,10 +147,9 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: #ddd; /* حمايه لو مفيش صورة */
+            background-color: #ddd;
         }
 
-        /* لو الصور لسه متحدثتش يظهر النص ده */
         .slide-placeholder {
             color: #777;
             font-size: 1.2rem;
@@ -185,17 +162,20 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background: rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.8);
             border: none;
-            width: 40px;
-            height: 40px;
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
             cursor: pointer;
-            font-size: 20px;
+            font-size: 22px;
             color: var(--primary-color);
             font-weight: bold;
-            z-index: 5;
+            z-index: 10;
             transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .slider-btn:hover {
@@ -206,7 +186,31 @@
         .prev { right: 10px; }
         .next { left: 10px; }
 
-        /* زينة بلونات في الخلفية */
+        /* العداد التنازلي */
+        .countdown-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .time-box {
+            background: var(--primary-color);
+            color: white;
+            padding: 15px;
+            border-radius: 15px;
+            min-width: 80px;
+            box-shadow: 0 5px 15px rgba(255, 101, 132, 0.3);
+        }
+
+        .time-box span {
+            display: block;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        /* زينة البالونات في الخلفية */
         .balloon {
             position: absolute;
             width: 30px;
@@ -214,32 +218,29 @@
             background: var(--secondary-color);
             border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
             bottom: -50px;
-            animation: float Up 8s infinite linear;
+            animation: floatUp 8s infinite linear;
             opacity: 0.6;
             z-index: 1;
         }
 
         @keyframes floatUp {
             0% { transform: translateY(0) rotate(0deg); opacity: 0.6; }
-            100% { transform: translateY(-110vh) rotate(20deg); opacity: 0; }
+            100% { transform: translateY(-120vh) rotate(20deg); opacity: 0; }
         }
     </style>
 </head>
 <body>
 
-    <!-- شاشة الباسورد -->
     <div id="login-screen">
         <h2>✨ قفل الذكريات ✨</h2>
-        <p style="margin-bottom: 15px; color: #777;">ادخلي تاريخ اليوم المميز عشان يفتح الموقع (مثال: يوم/شهر)</p>
-        <input type="text" id="password-input" placeholder="اكتب الباسورد هنا (مثلاً: 5/7)">
+        <p style="margin-bottom: 15px; color: #777;">ادخلي تاريخ اليوم المميز عشان يفتح الموقع (يوم/شهر)</p>
+        <input type="text" id="password-input" placeholder="اكتب الباسورد هنا (مثال: 5/7)">
         <button id="login-btn" onclick="checkPassword()">افتح المفاجأة 💖</button>
         <p id="error-msg">الباسورد غلط، حاولي تاني يا شهد! 😉</p>
     </div>
 
-    <!-- المحتوى الرئيسي بعد الباسورد -->
     <div id="main-content">
         
-        <!-- الكارد الأول: رسالة التهنئة -->
         <div class="card">
             <h1>كل سنة وأنتي طيبة يا شهد! 🎉❤️</h1>
             <p class="message">
@@ -249,38 +250,31 @@
             </p>
         </div>
 
-        <!-- الكارد الثاني: ألبوم الصور الأفقي -->
         <div class="card">
             <h2 style="color: var(--primary-color); margin-bottom: 15px;">أجمل الذكريات 📸</h2>
             <div class="slider-wrapper">
-                <button class="slider-btn prev" onclick="moveSlide(1)">❯</button>
+                <button class="slider-btn prev" onclick="moveSlide(-1)">❯</button>
                 <div class="slider" id="slider">
-                    <!-- الصورة الأولى -->
                     <div class="slide" style="background-image: url('img1.jpg');">
-                        <div class="slide-placeholder">حط صورتك الأولى هنا (img1.jpg)</div>
+                        <div class="slide-placeholder">اضغط لتغيير الصورة الأولى (img1.jpg)</div>
                     </div>
-                    <!-- الصورة الثانية -->
                     <div class="slide" style="background-image: url('img2.jpg');">
-                        <div class="slide-placeholder">حط صورتك الثانية هنا (img2.jpg)</div>
+                        <div class="slide-placeholder">اضغط لتغيير الصورة الثانية (img2.jpg)</div>
                     </div>
-                    <!-- الصورة الثالثة -->
                     <div class="slide" style="background-image: url('img3.jpg');">
-                        <div class="slide-placeholder">حط صورتك الثالثة هنا (img3.jpg)</div>
+                        <div class="slide-placeholder">اضغط لتغيير الصورة الثالثة (img3.jpg)</div>
                     </div>
-                    <!-- الصورة الرابعة -->
                     <div class="slide" style="background-image: url('img4.jpg');">
-                        <div class="slide-placeholder">حط صورتك الرابعة هنا (img4.jpg)</div>
+                        <div class="slide-placeholder">اضغط لتغيير الصورة الرابعة (img4.jpg)</div>
                     </div>
-                    <!-- الصورة الخامسة اختياري -->
                     <div class="slide" style="background-image: url('img5.jpg');">
-                        <div class="slide-placeholder">حط صورتك الخامسة هنا (img5.jpg)</div>
+                        <div class="slide-placeholder">اضغط لتغيير الصورة الخامسة (img5.jpg)</div>
                     </div>
                 </div>
-                <button class="slider-btn next" onclick="moveSlide(-1)">❮</button>
+                <button class="slider-btn next" onclick="moveSlide(1)">❮</button>
             </div>
         </div>
 
-        <!-- الكارد الثالث: العداد التنازلي / عمر شهد -->
         <div class="card">
             <h2 style="color: var(--primary-color); margin-bottom: 10px;">العداد السحري لـ شهد ⏳</h2>
             <p id="countdown-title" style="font-weight: bold; margin-bottom: 15px;"></p>
@@ -288,4 +282,86 @@
                 <div class="time-box"><span id="days">0</span>أيام</div>
                 <div class="time-box"><span id="hours">0</span>ساعات</div>
                 <div class="time-box"><span id="minutes">0</span>دقائق</div>
-                <divNormally I can help with things like this, but I don't seem to have access to that content. You can try again or ask me for something else.
+                <div class="time-box"><span id="seconds">0</span>ثواني</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // التحقق من الباسورد
+        function checkPassword() {
+            const input = document.getElementById('password-input').value.trim();
+            const correctPassword = "5/7"; 
+            
+            if (input === correctPassword) {
+                document.getElementById('login-screen').style.display = 'none';
+                document.getElementById('main-content').style.display = 'block';
+                initCountdown();
+                createBalloons();
+            } else {
+                const errorMsg = document.getElementById('error-msg');
+                errorMsg.style.display = 'block';
+            }
+        }
+
+        // ألبوم الصور الأفقي
+        let currentSlide = 0;
+        function moveSlide(direction) {
+            const slider = document.getElementById('slider');
+            const totalSlides = document.querySelectorAll('.slide').length;
+            
+            currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+            // التحريك بناءً على الاتجاه المتوافق مع الـ RTL
+            slider.style.transform = `translateX(${currentSlide * 100}%)`;
+        }
+
+        // العداد التنازلي لعيد الميلاد القادم (5 يوليو)
+        function initCountdown() {
+            const titleEl = document.getElementById('countdown-title');
+            
+            function updateClock() {
+                const now = new Date();
+                const currentYear = now.getFullYear();
+                
+                let targetDate = new Date(`July 5, ${currentYear} 00:00:00`);
+                
+                // لو تاريخ السنة دي عدا، يحسب للسنة الجاية
+                if (now > targetDate) {
+                    targetDate = new Date(`July 5, ${currentYear + 1} 00:00:00`);
+                }
+                
+                titleEl.innerText = `الوقت المتبقي على عيد ميلاد شهد القادم:`;
+                
+                const diff = targetDate - now;
+                
+                const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const s = Math.floor((diff % (1000 * 60)) / 1000);
+                
+                document.getElementById('days').innerText = d;
+                document.getElementById('hours').innerText = h;
+                document.getElementById('minutes').innerText = m;
+                document.getElementById('seconds').innerText = s;
+            }
+            
+            updateClock();
+            setInterval(updateClock, 1000);
+        }
+
+        // تأثير البالونات العشوائية في الخلفية
+        function createBalloons() {
+            const colors = ['#ff6584', '#ffb6c1', '#ffd700', '#ff8da1', '#e04d6c'];
+            for (let i = 0; i < 25; i++) {
+                const balloon = document.createElement('div');
+                balloon.classList.add('balloon');
+                balloon.style.left = Math.random() * 100 + 'vw';
+                balloon.style.animationDelay = Math.random() * 6 + 's';
+                balloon.style.animationDuration = (Math.random() * 4 + 6) + 's';
+                balloon.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                document.body.appendChild(balloon);
+            }
+        }
+    </script>
+</body>
+</html>
