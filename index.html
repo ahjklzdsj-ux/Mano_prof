@@ -1,309 +1,291 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>عيد ميلاد بسنت Ultra VIP 🎂💖</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عيد ميلاد سعيد شهد ✨</title>
+    <style>
+        :root {
+            --primary-color: #ff6584;
+            --secondary-color: #ffb6c1;
+            --accent-color: #ffd700;
+            --bg-gradient: linear-gradient(135deg, #ffe4e1 0%, #ffb6c1 100%);
+            --text-color: #4a4a4a;
+        }
 
-<style>
-*{box-sizing:border-box;margin:0;padding:0;}
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-body{
-  font-family: Arial, sans-serif;
-  text-align:center;
-  overflow-x:hidden;
-  color:#fff;
-  background: linear-gradient(135deg,#ff9a9e,#fad0c4);
-  transition: background 1s ease;
-}
+        body {
+            background: var(--bg-gradient);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            color: var(--text-color);
+        }
 
-/* الصور responsive */
-img{
-  max-width:100%;
-  height:auto;
-  border-radius:20px;
-  margin:10px 0;
-}
+        /* شاشة تسجيل الدخول */
+        #login-screen {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 90%;
+            max-width: 400px;
+            z-index: 10;
+            transition: all 0.5s ease;
+        }
 
-/* اسم متحرك */
-#nameAnim{
-  font-size:40px;
-  font-weight:bold;
-  margin:20px;
-  animation: glow 2s infinite alternate;
-}
+        #login-screen h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
 
-@keyframes glow{
-  from{color:#fff;text-shadow:0 0 10px #ff4b6e;}
-  to{color:#ffeb3b;text-shadow:0 0 20px #ff4b6e,0 0 30px #ffeb3b;}
-}
+        #password-input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid var(--secondary-color);
+            border-radius: 25px;
+            margin-bottom: 15px;
+            text-align: center;
+            font-size: 16px;
+            outline: none;
+        }
 
-/* قلوب */
-.heart{
-  position: fixed;
-  bottom: -20px;
-  font-size: 20px;
-  animation: floatUp 6s linear infinite;
-}
+        #login-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
 
-@keyframes floatUp{
-  0%{transform:translateY(0);opacity:1;}
-  100%{transform:translateY(-110vh);opacity:0;}
-}
+        #login-btn:hover {
+            background: #e04d6c;
+            transform: scale(1.05);
+        }
 
-/* كونفيتي */
-.confetti{
-  position:fixed;
-  top:-10px;
-  width:8px;
-  height:14px;
-  animation:fall 4s linear infinite;
-}
+        #error-msg {
+            color: red;
+            margin-top: 10px;
+            font-size: 14px;
+            display: none;
+        }
 
-@keyframes fall{
-  to{transform:translateY(110vh) rotate(360deg);}
-}
+        /* المحتوى الرئيسي للموقع */
+        #main-content {
+            display: none;
+            width: 100%;
+            max-width: 800px;
+            padding: 20px;
+            text-align: center;
+            animation: fadeIn 1.5s ease;
+        }
 
-button{
-  padding:10px 20px;
-  border:none;
-  border-radius:10px;
-  background:#ff4b6e;
-  color:#fff;
-  cursor:pointer;
-  margin:10px;
-}
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-.card{
-  background:rgba(255,255,255,0.2);
-  padding:20px;
-  border-radius:20px;
-  margin:20px auto;
-  max-width:700px;
-  position:relative;
-  overflow:hidden;
-}
+        .card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(5px);
+            padding: 30px;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            margin-bottom: 25px;
+        }
 
-.page{display:none;}
+        h1 {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
 
-video{
-  width:100%;
-  border-radius:20px;
-}
+        .message {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #555;
+            margin: 15px 0;
+        }
 
-input{
-  padding:10px;
-  border:none;
-  border-radius:8px;
-  width:220px;
-}
+        /* العداد التنازلي / التصاعدي للعمر */
+        .countdown-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
 
-#error{
-  color:yellow;
-  display:none;
-}
+        .time-box {
+            background: var(--primary-color);
+            color: white;
+            padding: 15px;
+            border-radius: 15px;
+            min-width: 80px;
+            box-shadow: 0 5px 15px rgba(255, 101, 132, 0.3);
+        }
 
-canvas{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  pointer-events:none;
-  z-index:-1;
-}
+        .time-box span {
+            display: block;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
 
-/* موبايل */
-@media (max-width:768px){
-  #nameAnim{font-size:28px;}
+        /* ألبوم الصور الأفقي */
+        .slider-wrapper {
+            position: relative;
+            width: 100%;
+            margin: 20px auto;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
 
-  .card{
-    margin:10px;
-    padding:15px;
-    max-width:95%;
-  }
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            width: 100%;
+        }
 
-  button{
-    width:100%;
-    margin:6px 0;
-  }
+        .slide {
+            min-width: 100%;
+            height: 400px;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #ddd; /* حمايه لو مفيش صورة */
+        }
 
-  input{width:90%;}
-  h1{font-size:26px;}
-  h2{font-size:20px;}
-}
+        /* لو الصور لسه متحدثتش يظهر النص ده */
+        .slide-placeholder {
+            color: #777;
+            font-size: 1.2rem;
+            background: rgba(255,255,255,0.7);
+            padding: 10px 20px;
+            border-radius: 10px;
+        }
 
-/* تابلت */
-@media (max-width:1024px){
-  .card{max-width:90%;}
-}
-</style>
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.7);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            color: var(--primary-color);
+            font-weight: bold;
+            z-index: 5;
+            transition: 0.3s;
+        }
+
+        .slider-btn:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .prev { right: 10px; }
+        .next { left: 10px; }
+
+        /* زينة بلونات في الخلفية */
+        .balloon {
+            position: absolute;
+            width: 30px;
+            height: 40px;
+            background: var(--secondary-color);
+            border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+            bottom: -50px;
+            animation: float Up 8s infinite linear;
+            opacity: 0.6;
+            z-index: 1;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0.6; }
+            100% { transform: translateY(-110vh) rotate(20deg); opacity: 0; }
+        }
+    </style>
 </head>
-
 <body>
 
-<div style="margin-top:120px;">
-<canvas id="fireworks"></canvas>
+    <!-- شاشة الباسورد -->
+    <div id="login-screen">
+        <h2>✨ قفل الذكريات ✨</h2>
+        <p style="margin-bottom: 15px; color: #777;">ادخلي تاريخ اليوم المميز عشان يفتح الموقع (مثال: يوم/شهر)</p>
+        <input type="text" id="password-input" placeholder="اكتب الباسورد هنا (مثلاً: 5/7)">
+        <button id="login-btn" onclick="checkPassword()">افتح المفاجأة 💖</button>
+        <p id="error-msg">الباسورد غلط، حاولي تاني يا شهد! 😉</p>
+    </div>
 
-<!-- صفحة الباسورد -->
-<div id="page0" class="page" style="display:block;margin-top:120px;">
-<h2>🔐 الموقع ده مش لأي حد 😌</h2>
-<p>لو انتي بسنت صاحبة عيد الميلاد… اكتبي الباسورد 👀</p>
-<input type="password" id="pass" placeholder="اكتبي الباسورد">
-<br><br>
-<button onclick="nextPage(0)">دخول</button>
-<p id="error">❌ دي مش بسنت 😂</p>
-</div>
+    <!-- المحتوى الرئيسي بعد الباسورد -->
+    <div id="main-content">
+        
+        <!-- الكارد الأول: رسالة التهنئة -->
+        <div class="card">
+            <h1>كل سنة وأنتي طيبة يا شهد! 🎉❤️</h1>
+            <p class="message">
+                اليوم مش مجرد يوم عادي، اليوم ده اتولدت فيه أجمل وأرق بنوتة في الدنيا كلها.. "شهد". <br>
+                كل سنة وأنتي دايماً منورة حياتنا بضحكتك اللي بتفرح القلب، وكل سنة وأنتي محققة كل أحلامك وطموحاتك. <br>
+                أتمنالك سنة جديدة مليانة فرحة، نجاح، وحب شبه طيبة قلبك. دايماً تفضلي الشخص المميز والغالي اللي مفيش منه اتنين. 💖 ✨
+            </p>
+        </div>
 
-<script>
-const correctPassword="5/2/2009";
-let currentPage=0;
+        <!-- الكارد الثاني: ألبوم الصور الأفقي -->
+        <div class="card">
+            <h2 style="color: var(--primary-color); margin-bottom: 15px;">أجمل الذكريات 📸</h2>
+            <div class="slider-wrapper">
+                <button class="slider-btn prev" onclick="moveSlide(1)">❯</button>
+                <div class="slider" id="slider">
+                    <!-- الصورة الأولى -->
+                    <div class="slide" style="background-image: url('img1.jpg');">
+                        <div class="slide-placeholder">حط صورتك الأولى هنا (img1.jpg)</div>
+                    </div>
+                    <!-- الصورة الثانية -->
+                    <div class="slide" style="background-image: url('img2.jpg');">
+                        <div class="slide-placeholder">حط صورتك الثانية هنا (img2.jpg)</div>
+                    </div>
+                    <!-- الصورة الثالثة -->
+                    <div class="slide" style="background-image: url('img3.jpg');">
+                        <div class="slide-placeholder">حط صورتك الثالثة هنا (img3.jpg)</div>
+                    </div>
+                    <!-- الصورة الرابعة -->
+                    <div class="slide" style="background-image: url('img4.jpg');">
+                        <div class="slide-placeholder">حط صورتك الرابعة هنا (img4.jpg)</div>
+                    </div>
+                    <!-- الصورة الخامسة اختياري -->
+                    <div class="slide" style="background-image: url('img5.jpg');">
+                        <div class="slide-placeholder">حط صورتك الخامسة هنا (img5.jpg)</div>
+                    </div>
+                </div>
+                <button class="slider-btn next" onclick="moveSlide(-1)">❮</button>
+            </div>
+        </div>
 
-// قائمة الصفحات VIP
-const pages=[
-  {title:"🎉 Happy Birthday يا بسنت 🎂💖", content:"من 5/8/2025 والدنيا بقت أضحك والهزار بقى أحلى 😂💖", type:"text"},
-  {title:"📸 صور عيد ميلاد", content:["https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e","https://images.unsplash.com/photo-1517841905240-472988babdf9","https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d"], type:"images"},
-  {title:"🎥 فيديو المفاجأة", content:"https://www.w3schools.com/html/mov_bbb.mp4", type:"video"},
-  {title:"💌 رسالة عيد ميلاد", content:"يا بسنت يا أحلى وأظرف واحدة 😎💖 كل سنة وانتي طيبة ومليانة ضحك وسعادة يارب يخليكي ليا وما يحرمنيش منك ❤️ ويظل الهزار شغال 24/7 😌😂", type:"text"},
-  {title:"💖 قلوب وتأثيرات", content:"اضغطي وشوفي القلوب والكونفيتي", type:"text"},
-  {title:"🎁 مفاجأة إضافية", content:"هديتك النهاردة مش بس موقع… ده رحلة كاملة ليكي 🎉", type:"text"},
-  {title:"🎆 ألعاب نارية", content:"انطلقي وشوفي المتعة 😎💖", type:"text"},
-  {title:"💌 رسالة رومانسية + هزار", content:"ضحكتك تفرق في حياتي وهزارك أحلى حاجة 😌😂 كل سنة وانتي فرحانة 😏✨", type:"text"},
-  {title:"💌 الصفحة السرية", content:"وجودك حلو فعلًا وضحتك أهم من أي حاجة 💖 خفيفة وقلبك أبيض 🤍", type:"text"},
-  {title:"🎉 كل سنة وانتي طيبة يا روح قلبي 🌟", content:"ينور عيني وعيد ميلاد سعيد عليكي 💖✨ أنا حبيت أفاجئك وأعمللك موقع باسمك مخصوص 😏🎉", type:"text"},
-  {title:"🌈 صفحة ألوان متغيرة", content:"استمتعي بالألوان وتأثيرات الخلفية 😍", type:"text"},
-  {title:"📸 صور رومانسية إضافية", content:["https://images.unsplash.com/photo-1544005313-94ddf0286df2","https://images.unsplash.com/photo-1519999482648-25049ddd37b1"], type:"images"},
-  {title:"🎥 فيديوهات إضافية", content:"https://www.w3schools.com/html/movie.mp4", type:"video"},
-  {title:"💌 رسالة VIP", content:"أنا أحبك يا بسنت 😏💖 ألف مبروك عيد ميلادك وكل سنة وانتي دايمًا فرحانة", type:"text"},
-  {title:"🎇 صفحة المفاجأة النهائية", content:"دلوقتي انتهت الرحلة يا ملكة 😎💖", type:"text"},
-  {title:"✨ الصفحة 3D التفاعلية", content:"المفاجأة الكبرى بسنت ❤️", type:"3d"}
-];
-
-// انشاء صفحات HTML
-pages.forEach((p,i)=>{
-  const div=document.createElement("div");
-  div.className="page";
-  div.id="page"+(i+1);
-  let html=`<div class="card">`;
-  if(p.type=="text") html+=`<h2>${p.title}</h2><p>${p.content}</p>`;
-  if(p.type=="images"){html+=`<h2>${p.title}</h2>`;p.content.forEach(src=>html+=`<img src="${src}">`);}
-  if(p.type=="video"){html+=`<h2>${p.title}</h2><video controls><source src="${p.content}" type="video/mp4"></video>`;}
-  if(p.type=="3d"){
-    html+=`<h1 style="position:absolute;top:40%;left:50%;transform:translate(-50%,-50%);font-size:40px;animation:moveText 8s linear infinite;color:#fff;">✨ بسنت يا روح قلبي ✨</h1>`;
-    html+=`<h2 style="position:absolute;top:60%;left:50%;transform:translate(-50%,-50%);font-size:30px;animation:moveText2 6s linear infinite;color:#ffeb3b;">عيد ميلاد سعيد عليكي 💖😂</h2>`;
-  }
-  html+=`<br><button onclick="prevPage(${i+1})">⬅️ السابق</button> <button onclick="nextPage(${i+1})">➡️ التالي</button>`;
-  html+=`</div>`;
-  div.innerHTML=html;
-  document.body.appendChild(div);
-});
-
-// التحقق من الباسورد والتنقل
-function nextPage(current){
-  if(current===0){
-    let input=document.getElementById("pass").value;
-    if(input!==correctPassword){
-      document.getElementById("error").style.display="block";
-      return;
-    }
-    document.getElementById("error").style.display="none";
-  }
-  let next=current+1;
-  document.getElementById("page"+current).style.display="none";
-  document.getElementById("page"+next).style.display="block";
-  currentPage=next;
-  if(next===1) calculateDays();
-  if(next===5) {startHearts();confetti();}
-  if(next===16) {startHearts();confetti();}
-}
-
-function prevPage(current){
-  document.getElementById("page"+current).style.display="none";
-  let prev=current-1;
-  if(prev>=0){
-    document.getElementById("page"+prev).style.display="block";
-    currentPage=prev;
-  }
-}
-
-function backToStart(){
-  for(let i=0;i<=16;i++){
-    const el=document.getElementById("page"+i);
-    if(el) el.style.display="none";
-  }
-  document.getElementById("page0").style.display="block";
-  currentPage=0;
-}
-
-// عداد الأيام
-function calculateDays(){
-let start=new Date("2025-08-05");
-let today=new Date();
-let diff=today-start;
-let days=Math.floor(diff/(1000*60*60*24));
-document.getElementById("days").innerHTML=
-"⏳ بقالنا "+days+" يوم هزار وضحك 😂💖";
-}
-
-/* قلوب */
-function startHearts(){
-setInterval(()=>{
-let h=document.createElement("div");
-h.className="heart";
-h.innerHTML="💖";
-h.style.left=Math.random()*100+"vw";
-document.body.appendChild(h);
-setTimeout(()=>h.remove(),6000);
-},400);
-}
-
-/* كونفيتي */
-function confetti(){
-for(let i=0;i<70;i++){
-let c=document.createElement("div");
-c.className="confetti";
-c.style.left=Math.random()*100+"vw";
-c.style.background=`hsl(${Math.random()*360},100%,70%)`;
-c.style.animationDuration=(2+Math.random()*3)+"s";
-document.body.appendChild(c);
-setTimeout(()=>c.remove(),5000);
-}
-}
-
-/* ألعاب نارية خلفية */
-const canvas=document.getElementById('fireworks');
-const ctx=canvas.getContext('2d');
-canvas.width=window.innerWidth;
-canvas.height=window.innerHeight;
-function random(min,max){return Math.random()*(max-min)+min;}
-let fireworks=[];
-function Firework(){this.x=random(0,canvas.width);this.y=canvas.height;this.radius=random(2,4);this.color=`hsl(${Math.random()*360},100%,70%)`;this.vy=random(2,5);}
-function update(){ctx.clearRect(0,0,canvas.width,canvas.height);for(let f of fireworks){ctx.beginPath();ctx.arc(f.x,f.y,f.radius,0,2*Math.PI);ctx.fillStyle=f.color;ctx.fill();f.y-=f.vy;if(f.y<0) f.y=canvas.height;}}
-function loop(){update();requestAnimationFrame(loop);}
-for(let i=0;i<250;i++) fireworks.push(new Firework());
-loop();
-</script>
-
-<style>
-@keyframes moveText{
-  0%{transform:translate(-50%, -50%) rotateY(0deg);color:#ff4b6e;}
-  25%{transform:translate(-50%, -60%) rotateY(90deg);color:#ffeb3b;}
-  50%{transform:translate(-50%, -50%) rotateY(180deg);color:#4bff6e;}
-  75%{transform:translate(-50%, -40%) rotateY(270deg);color:#6e4bff;}
-  100%{transform:translate(-50%, -50%) rotateY(360deg);color:#ff4b6e;}
-}
-@keyframes moveText2{
-  0%{transform:translate(-50%, -50%) rotateX(0deg);color:#fff;}
-  25%{transform:translate(-50%, -55%) rotateX(90deg);color:#ffeb3b;}
-  50%{transform:translate(-50%, -50%) rotateX(180deg);color:#ff4b6e;}
-  75%{transform:translate(-50%, -45%) rotateX(270deg);color:#6e4bff;}
-  100%{transform:translate(-50%, -50%) rotateX(360deg);color:#fff;}
-}
-</style>
-
-<audio id="music" autoplay loop>
-<source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-</audio>
-
-</body>
-  </html>
+        <!-- الكارد الثالث: العداد التنازلي / عمر شهد -->
+        <div class="card">
+            <h2 style="color: var(--primary-color); margin-bottom: 10px;">العداد السحري لـ شهد ⏳</h2>
+            <p id="countdown-title" style="font-weight: bold; margin-bottom: 15px;"></p>
+            <div class="countdown-container">
+                <div class="time-box"><span id="days">0</span>أيام</div>
+                <div class="time-box"><span id="hours">0</span>ساعات</div>
+                <div class="time-box"><span id="minutes">0</span>دقائق</div>
+                <divNormally I can help with things like this, but I don't seem to have access to that content. You can try again or ask me for something else.
