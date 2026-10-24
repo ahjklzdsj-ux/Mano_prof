@@ -3,365 +3,479 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>عيد ميلاد سعيد شهد ✨</title>
-    <style>
-        :root {
-            --primary-color: #ff6584;
-            --secondary-color: #ffb6c1;
-            --accent-color: #ffd700;
-            --bg-gradient: linear-gradient(135deg, #ffe4e1 0%, #ffb6c1 100%);
-            --text-color: #4a4a4a;
-        }
+    <meta name="theme-color" content="#0b1220">
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+    <meta name="description" content="الموقع الشخصي لمؤمن ياسر، مطور ومهتم بالتكنولوجيا والبرمجة.">
 
-        body {
-            background: var(--bg-gradient);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow-x: hidden;
-            color: var(--text-color);
-            position: relative;
-        }
+    <title>مؤمن ياسر | الموقع الشخصي</title>
 
-        /* شاشة تسجيل الدخول */
-        #login-screen {
-            background: rgba(255, 255, 255, 0.9);
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            text-align: center;
-            width: 90%;
-            max-width: 400px;
-            z-index: 10;
-            transition: all 0.5s ease;
-        }
-
-        #login-screen h2 {
-            color: var(--primary-color);
-            margin-bottom: 20px;
-        }
-
-        #password-input {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid var(--secondary-color);
-            border-radius: 25px;
-            margin-bottom: 15px;
-            text-align: center;
-            font-size: 16px;
-            outline: none;
-        }
-
-        #login-btn {
-            background: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 12px 30px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        #login-btn:hover {
-            background: #e04d6c;
-            transform: scale(1.05);
-        }
-
-        #error-msg {
-            color: red;
-            margin-top: 10px;
-            font-size: 14px;
-            display: none;
-        }
-
-        /* المحتوى الرئيسي للموقع */
-        #main-content {
-            display: none;
-            width: 100%;
-            max-width: 800px;
-            padding: 20px;
-            text-align: center;
-            animation: fadeIn 1.5s ease;
-            z-index: 5;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .card {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(5px);
-            padding: 30px;
-            border-radius: 25px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            margin-bottom: 25px;
-        }
-
-        h1 {
-            color: var(--primary-color);
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-        }
-
-        .message {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            color: #555;
-            margin: 15px 0;
-        }
-
-        /* ألبوم الصور الأفقي */
-        .slider-wrapper {
-            position: relative;
-            width: 100%;
-            margin: 20px auto;
-            overflow: hidden;
-            border-radius: 20px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-        }
-
-        .slider {
-            display: flex;
-            transition: transform 0.5s ease-in-out;
-            width: 100%;
-        }
-
-        .slide {
-            min-width: 100%;
-            height: 400px;
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #ddd;
-        }
-
-        .slide-placeholder {
-            color: #777;
-            font-size: 1.2rem;
-            background: rgba(255,255,255,0.7);
-            padding: 10px 20px;
-            border-radius: 10px;
-        }
-
-        .slider-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(255, 255, 255, 0.8);
-            border: none;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 22px;
-            color: var(--primary-color);
-            font-weight: bold;
-            z-index: 10;
-            transition: 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .slider-btn:hover {
-            background: var(--primary-color);
-            color: white;
-        }
-
-        .prev { right: 10px; }
-        .next { left: 10px; }
-
-        /* العداد التنازلي */
-        .countdown-container {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 20px;
-            flex-wrap: wrap;
-        }
-
-        .time-box {
-            background: var(--primary-color);
-            color: white;
-            padding: 15px;
-            border-radius: 15px;
-            min-width: 80px;
-            box-shadow: 0 5px 15px rgba(255, 101, 132, 0.3);
-        }
-
-        .time-box span {
-            display: block;
-            font-size: 1.8rem;
-            font-weight: bold;
-        }
-
-        /* زينة البالونات في الخلفية */
-        .balloon {
-            position: absolute;
-            width: 30px;
-            height: 40px;
-            background: var(--secondary-color);
-            border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
-            bottom: -50px;
-            animation: floatUp 8s infinite linear;
-            opacity: 0.6;
-            z-index: 1;
-        }
-
-        @keyframes floatUp {
-            0% { transform: translateY(0) rotate(0deg); opacity: 0.6; }
-            100% { transform: translateY(-120vh) rotate(20deg); opacity: 0; }
-        }
-    </style>
+    <!-- ربط ملف التصميم -->
+    <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
-    <div id="login-screen">
-        <h2>✨ قفل الذكريات ✨</h2>
-        <p style="margin-bottom: 15px; color: #777;">ادخلي تاريخ اليوم المميز عشان يفتح الموقع (يوم/شهر)</p>
-        <input type="text" id="password-input" placeholder="اكتب الباسورد هنا (مثال: 5/7)">
-        <button id="login-btn" onclick="checkPassword()">افتح المفاجأة 💖</button>
-        <p id="error-msg">الباسورد غلط، حاولي تاني يا شهد! 😉</p>
-    </div>
+    <!-- شريط التنقل -->
+    <header class="header">
+        <nav class="navbar container">
 
-    <div id="main-content">
-        
-        <div class="card">
-            <h1>كل سنة وأنتي طيبة يا شهد! 🎉❤️</h1>
-            <p class="message">
-                اليوم مش مجرد يوم عادي، اليوم ده اتولدت فيه أجمل وأرق بنوتة في الدنيا كلها.. "شهد". <br>
-                كل سنة وأنتي دايماً منورة حياتنا بضحكتك اللي بتفرح القلب، وكل سنة وأنتي محققة كل أحلامك وطموحاتك. <br>
-                أتمنالك سنة جديدة مليانة فرحة، نجاح، وحب شبه طيبة قلبك. دايماً تفضلي الشخص المميز والغالي اللي مفيش منه اتنين. 💖 ✨
-            </p>
-        </div>
+            <a href="#home" class="logo">
+                MY<span>.</span>
+            </a>
 
-        <div class="card">
-            <h2 style="color: var(--primary-color); margin-bottom: 15px;">أجمل الذكريات 📸</h2>
-            <div class="slider-wrapper">
-                <button class="slider-btn prev" onclick="moveSlide(-1)">❯</button>
-                <div class="slider" id="slider">
-                    <div class="slide" style="background-image: url('img1.jpg');">
-                        <div class="slide-placeholder">اضغط لتغيير الصورة الأولى (img1.jpg)</div>
+            <div class="nav-links">
+                <a href="#home">الرئيسية</a>
+                <a href="#about">من أنا</a>
+                <a href="#skills">مهاراتي</a>
+                <a href="#projects">أعمالي</a>
+                <a href="#contact">تواصل معايا</a>
+            </div>
+
+            <a href="#contact" class="nav-button">
+                تواصل معايا <span>↗</span>
+            </a>
+
+        </nav>
+    </header>
+
+
+    <main>
+
+        <!-- القسم الرئيسي -->
+        <section class="hero section" id="home">
+            <div class="container hero-grid">
+
+                <div class="hero-content">
+
+                    <div class="status">
+                        <span class="status-dot"></span>
+                        أهلاً بيك في موقعي الشخصي
                     </div>
-                    <div class="slide" style="background-image: url('img2.jpg');">
-                        <div class="slide-placeholder">اضغط لتغيير الصورة الثانية (img2.jpg)</div>
+
+                    <p class="eyebrow">أهلاً، أنا</p>
+
+                    <h1>
+                        Momen Yasser
+                        <span class="hero-highlight">.</span>
+                    </h1>
+
+                    <h2>مهتم بالبرمجة والتكنولوجيا</h2>
+
+                    <p class="hero-description">
+                        بحب أتعلم حاجات جديدة في عالم البرمجة والتكنولوجيا،
+                        وأحوّل الأفكار لمشاريع رقمية بتصميم بسيط وتجربة استخدام مميزة.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a href="#projects" class="button button-primary">
+                            شوف أعمالي <span>↙</span>
+                        </a>
+
+                        <a href="#about" class="button button-secondary">
+                            اعرف أكتر عني
+                        </a>
                     </div>
-                    <div class="slide" style="background-image: url('img3.jpg');">
-                        <div class="slide-placeholder">اضغط لتغيير الصورة الثالثة (img3.jpg)</div>
+
+                    <div class="hero-note">
+                        <span class="note-line"></span>
+                        <span>التعلم المستمر هو بداية كل إنجاز.</span>
                     </div>
-                    <div class="slide" style="background-image: url('img4.jpg');">
-                        <div class="slide-placeholder">اضغط لتغيير الصورة الرابعة (img4.jpg)</div>
+
+                </div>
+
+
+                <!-- الصورة الشخصية -->
+                <div class="hero-visual">
+
+                    <div class="visual-glow"></div>
+
+                    <div class="photo-card">
+
+                        <div class="photo-top">
+                            <span class="photo-label">PROFILE / 01</span>
+                            <span class="photo-indicator"></span>
+                        </div>
+
+                        <!-- استبدل profile.jpg بصورتك -->
+                        <div class="profile-frame">
+                            <img
+                                src="profile.jpg"
+                                alt="الصورة الشخصية لمؤمن ياسر"
+                                class="profile-image"
+                            >
+                        </div>
+
+                        <div class="photo-bottom">
+                            <div>
+                                <span class="photo-caption">الملف الشخصي</span>
+                                <h3>مؤمن ياسر</h3>
+                            </div>
+
+                            <div class="photo-mark">MY.</div>
+                        </div>
+
                     </div>
-                    <div class="slide" style="background-image: url('img5.jpg');">
-                        <div class="slide-placeholder">اضغط لتغيير الصورة الخامسة (img5.jpg)</div>
+
+                    <div class="floating-tag tag-top">
+                        <span class="tag-icon">✳</span>
+                        <span>الإبداع</span>
+                    </div>
+
+                    <div class="floating-tag tag-bottom">
+                        <span class="tag-icon">⌘</span>
+                        <span>التكنولوجيا</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="hero-bottom container">
+                <span>01 — أهلاً بيك</span>
+                <a href="#about" aria-label="انتقل إلى قسم من أنا">↓</a>
+                <span>اكتشف المزيد</span>
+            </div>
+        </section>
+
+
+        <!-- قسم من أنا -->
+        <section class="section about-section" id="about">
+            <div class="container">
+
+                <div class="section-heading">
+                    <span class="section-label">01 / من أنا</span>
+                    <h2>خليني <span>أعرّفك بنفسي.</span></h2>
+                    <p>
+                        أنا اسمي مؤمن ياسر من كفر الشيخ عمري 19 سنة مشهور في السوشيال ميديا بإسم مانو الكفراوي وحاليا بدرس في معهد نظم ومعلومات 
+                    </p>
+                </div>
+
+                <div class="about-grid">
+
+                    <div class="about-main">
+                        <span class="about-symbol">“</span>
+
+                        <h3>
+                            كل فكرة تستاهل إنها تتحول لحاجة حقيقية.
+                        </h3>
+
+                        <p>
+                            مهتم بعالم البرمجة وتصميم المواقع
+                            والتطبيقات. بحب أكتشف أدوات جديدة، وأطوّر مهاراتي،
+                            وأشتغل على مشاريع تساعدني أتعلم وأقدّم أفكار بشكل أفضل.
+                        </p>
+
+                        <p>
+                            هدفي إني أستمر في التعلم، وأبني مشاريع أفتخر بيها،
+                            وأشارك رحلتي وكل جديد بوصل له.
+                        </p>
+                    </div>
+
+                    <div class="about-details">
+
+                        <div class="detail-card">
+                            <span class="detail-number">01</span>
+                            <div>
+                                <h4>التعلم</h4>
+                                <p>اكتساب مهارات جديدة وتطوير نفسي باستمرار.</p>
+                            </div>
+                        </div>
+
+                        <div class="detail-card">
+                            <span class="detail-number">02</span>
+                            <div>
+                                <h4>الإبداع</h4>
+                                <p>تحويل الأفكار لتصميمات ومشاريع مميزة.</p>
+                            </div>
+                        </div>
+
+                        <div class="detail-card">
+                            <span class="detail-number">03</span>
+                            <div>
+                                <h4>التطوير</h4>
+                                <p>تحسين شغلي وتجربة حاجات جديدة باستمرار.</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- قسم المهارات -->
+        <section class="section skills-section" id="skills">
+            <div class="container">
+
+                <div class="section-heading">
+                    <span class="section-label">02 / مهاراتي واهتماماتي</span>
+                    <h2>الحاجات اللي <span>بحبها.</span></h2>
+                    <p>
+                        المجالات اللي بتعلم فيها وبطوّر معرفتي بيها.
+                    </p>
+                </div>
+
+                <div class="skills-grid">
+
+                    <article class="skill-card">
+                        <span class="skill-icon">&lt;/&gt;</span>
+                        <span class="skill-index">01</span>
+                        <h3>تطوير المواقع</h3>
+                        <p>
+                            إنشاء صفحات ويب منظمة، متجاوبة، وسهلة الاستخدام.
+                        </p>
+                        <span class="skill-footer">HTML / CSS</span>
+                    </article>
+
+                    <article class="skill-card">
+                        <span class="skill-icon">⌘</span>
+                        <span class="skill-index">02</span>
+                        <h3>البرمجة</h3>
+                        <p>
+                            تعلم البرمجة وحل المشكلات وبناء مشاريع عملية.
+                        </p>
+                        <span class="skill-footer">CODE / LOGIC</span>
+                    </article>
+
+                    <article class="skill-card">
+                        <span class="skill-icon">◇</span>
+                        <span class="skill-index">03</span>
+                        <h3>التصميم</h3>
+                        <p>
+                            الاهتمام بالتفاصيل والألوان وتجربة المستخدم.
+                        </p>
+                        <span class="skill-footer">UI / DESIGN</span>
+                    </article>
+
+                    <article class="skill-card">
+                        <span class="skill-icon">↗</span>
+                        <span class="skill-index">04</span>
+                        <h3>التكنولوجيا</h3>
+                        <p>
+                            استكشاف الأدوات والتقنيات اللي بتسهّل تنفيذ الأفكار.
+                        </p>
+                        <span class="skill-footer">TECH / DIGITAL</span>
+                    </article>
+
+                </div>
+
+                <p class="skills-note">
+                    ملاحظة: أنا حاليا ادرس في معهد للهندسة والتكنولوجيا بكفر الشيخ 
+                </p>
+
+            </div>
+        </section>
+
+
+        <!-- قسم الأعمال والمشاريع -->
+        <section class="section projects-section" id="projects">
+            <div class="container">
+
+                <div class="section-heading">
+                    <span class="section-label">03 / أعمالي</span>
+                    <h2>مشاريعي <span>المميزة.</span></h2>
+                    <p>
+                        هنا هتلاقي نماذج من المشاريع اللي بشتغل عليها.
+                    </p>
+                </div>
+
+                <div class="projects-grid">
+
+                    <article class="project-card">
+                        <div class="project-preview preview-one">
+                            <span class="preview-number">PROJECT / 01</span>
+                            <div class="preview-window">
+                                <span></span><span></span><span></span>
+                                <div class="preview-content">
+                                    <div class="preview-line"></div>
+                                    <div class="preview-line short"></div>
+                                    <div class="preview-block"></div>
+                                </div>
+                            </div>
+                            <span class="preview-caption">WEB DESIGN</span>
+                        </div>
+
+                        <div class="project-info">
+                            <div class="project-meta">
+                                <span>مشروع ويب</span>
+                                <span>01</span>
+                            </div>
+                            <h3>موقعي الشخصي</h3>
+                            <p>
+                                موقع شخصي للتعريف بيا وعرض مهاراتي ومشاريعي.
+                            </p>
+                            <a href="#contact" class="project-link">
+                                استفسر عن المشروع <span>↙</span>
+                            </a>
+                        </div>
+                    </article>
+
+
+                    <article class="project-card">
+                        <div class="project-preview preview-two">
+                            <span class="preview-number">PROJECT / 02</span>
+                            <div class="app-preview">
+                                <div class="app-sidebar"></div>
+                                <div class="app-main">
+                                    <div class="app-bar"></div>
+                                    <div class="app-boxes">
+                                        <span></span><span></span>
+                                    </div>
+                                    <div class="app-chart"></div>
+                                </div>
+                            </div>
+                            <span class="preview-caption">DIGITAL PROJECT</span>
+                        </div>
+
+                        <div class="project-info">
+                            <div class="project-meta">
+                                <span>مشروع رقمي</span>
+                                <span>02</span>
+                            </div>
+                            <h3>مشروع جديد</h3>
+                            <p>
+                                اقوم بعمل موقع لمحل ملابس عبر الإنترنت 
+                            </p>
+                            <a href="#contact" class="project-link">
+                                استفسر عن المشروع <span>↙</span>
+                            </a>
+                        </div>
+                    </article>
+
+
+                    <article class="project-card">
+                        <div class="project-preview preview-three">
+                            <span class="preview-number">PROJECT / 03</span>
+                            <div class="code-preview">
+                                <span class="code-blue">&lt;html&gt;</span>
+                                <span class="code-white">My Project</span>
+                                <span class="code-cyan">Design &amp; Build</span>
+                                <span class="code-blue">&lt;/html&gt;</span>
+                            </div>
+                            <span class="preview-caption">EXPERIMENTAL</span>
+                        </div>
+
+                        <div class="project-info">
+                            <div class="project-meta">
+                                <span>تجربة برمجية</span>
+                                <span>03</span>
+                            </div>
+                            <h3>مشروع من اختياري</h3>
+                            <p>
+                                لسة تحت التصميم
+                            </p>
+                            <a href="#contact" class="project-link">
+                                استفسر عن المشروع <span>↙</span>
+                            </a>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- قسم التواصل -->
+        <section class="section contact-section" id="contact">
+            <div class="container">
+
+                <div class="contact-box">
+
+                    <div class="contact-content">
+                        <span class="section-label">04 / خلينا نتواصل</span>
+
+                        <h2>
+                            عندك فكرة؟
+                            <span>خلينا نبدأ.</span>
+                        </h2>
+
+                        <p>
+                            تقدر تتواصل معايا من خلال الروابط دي،
+                            أو تبعتلي رسالة على واتساب.
+                        </p>
+
+                        <a
+                            class="button button-primary"
+                            href="https://wa.me/201007493757"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            ابعتلي على واتساب <span>↗</span>
+                        </a>
+                    </div>
+
+                    <div class="contact-links">
+
+                        <!-- استبدل الروابط بروابطك الحقيقية -->
+                        <a href="https://t.me/ssese6"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="social-link">
+                            <span class="social-icon">TG</span>
+                            <span>
+                                <strong>تليجرام</strong>
+                                <small>تابعني أو ابعتلي رسالة</small>
+                            </span>
+                            <span class="social-arrow">↗</span>
+                        </a>
+
+                        <a href="https://instagram.com/m_ano234"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="social-link">
+                            <span class="social-icon">IG</span>
+                            <span>
+                                <strong>إنستجرام</strong>
+                                <small>شوف آخر تحديثاتي</small>
+                            </span>
+                            <span class="social-arrow">↗</span>
+                        </a>
+
+                        <a href="https://youtube.com/@Mano_El_kbeer123"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="social-link">
+                            <span class="social-icon">YT</span>
+                            <span>
+                                <strong>يوتيوب</strong>
+                                <small>شوف المحتوى بتاعي</small>
+                            </span>
+                            <span class="social-arrow">↗</span>
+                        </a>
+
                     </div>
                 </div>
-                <button class="slider-btn next" onclick="moveSlide(1)">❮</button>
+
             </div>
+        </section>
+
+    </main>
+
+
+    <!-- نهاية الموقع -->
+    <footer class="footer">
+        <div class="container footer-content">
+
+            <a href="#home" class="logo">
+                MY<span>.</span>
+            </a>
+
+            <p>
+                صُنع بكل اهتمام بواسطة <strong>مؤمن ياسر</strong>
+            </p>
+
+            <a href="#home" class="back-top">
+                لفوق ↑
+            </a>
+
         </div>
 
-        <div class="card">
-            <h2 style="color: var(--primary-color); margin-bottom: 10px;">العداد السحري لـ شهد ⏳</h2>
-            <p id="countdown-title" style="font-weight: bold; margin-bottom: 15px;"></p>
-            <div class="countdown-container">
-                <div class="time-box"><span id="days">0</span>أيام</div>
-                <div class="time-box"><span id="hours">0</span>ساعات</div>
-                <div class="time-box"><span id="minutes">0</span>دقائق</div>
-                <div class="time-box"><span id="seconds">0</span>ثواني</div>
-            </div>
+        <div class="footer-bottom container">
+            <span>© 2026 مؤمن ياسر — جميع الحقوق محفوظة.</span>
+            <span>DESIGNED WITH PURPOSE.</span>
         </div>
-    </div>
+    </footer>
 
-    <script>
-        // التحقق من الباسورد
-        function checkPassword() {
-            const input = document.getElementById('password-input').value.trim();
-            const correctPassword = "5/7"; 
-            
-            if (input === correctPassword) {
-                document.getElementById('login-screen').style.display = 'none';
-                document.getElementById('main-content').style.display = 'block';
-                initCountdown();
-                createBalloons();
-            } else {
-                const errorMsg = document.getElementById('error-msg');
-                errorMsg.style.display = 'block';
-            }
-        }
-
-        // ألبوم الصور الأفقي
-        let currentSlide = 0;
-        function moveSlide(direction) {
-            const slider = document.getElementById('slider');
-            const totalSlides = document.querySelectorAll('.slide').length;
-            
-            currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
-            // التحريك بناءً على الاتجاه المتوافق مع الـ RTL
-            slider.style.transform = `translateX(${currentSlide * 100}%)`;
-        }
-
-        // العداد التنازلي لعيد الميلاد القادم (5 يوليو)
-        function initCountdown() {
-            const titleEl = document.getElementById('countdown-title');
-            
-            function updateClock() {
-                const now = new Date();
-                const currentYear = now.getFullYear();
-                
-                let targetDate = new Date(`July 5, ${currentYear} 00:00:00`);
-                
-                // لو تاريخ السنة دي عدا، يحسب للسنة الجاية
-                if (now > targetDate) {
-                    targetDate = new Date(`July 5, ${currentYear + 1} 00:00:00`);
-                }
-                
-                titleEl.innerText = `الوقت المتبقي على عيد ميلاد شهد القادم:`;
-                
-                const diff = targetDate - now;
-                
-                const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-                const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                const s = Math.floor((diff % (1000 * 60)) / 1000);
-                
-                document.getElementById('days').innerText = d;
-                document.getElementById('hours').innerText = h;
-                document.getElementById('minutes').innerText = m;
-                document.getElementById('seconds').innerText = s;
-            }
-            
-            updateClock();
-            setInterval(updateClock, 1000);
-        }
-
-        // تأثير البالونات العشوائية في الخلفية
-        function createBalloons() {
-            const colors = ['#ff6584', '#ffb6c1', '#ffd700', '#ff8da1', '#e04d6c'];
-            for (let i = 0; i < 25; i++) {
-                const balloon = document.createElement('div');
-                balloon.classList.add('balloon');
-                balloon.style.left = Math.random() * 100 + 'vw';
-                balloon.style.animationDelay = Math.random() * 6 + 's';
-                balloon.style.animationDuration = (Math.random() * 4 + 6) + 's';
-                balloon.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-                document.body.appendChild(balloon);
-            }
-        }
-    </script>
 </body>
-</html>
+                </html>
